@@ -1,5 +1,6 @@
 import React from "react";
 
+import "./Navbar.css";
 const Navbar = ({ logo, children }) => {
   return (
     <nav id="main__nav">

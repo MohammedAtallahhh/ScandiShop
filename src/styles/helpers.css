@@ -1,0 +1,45 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  outline: none;
+
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 0.25rem;
+  padding: 0.5em 1.2em;
+
+  transition: all 100ms ease;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.btn:active {
+  scale: 1.05;
+}
+
+.btn-primary {
+  background: rgb(0, 110, 255);
+  color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: rgb(5, 94, 211);
+}
+
+.btn-danger {
+  background: rgb(252, 74, 74);
+  color: white;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background: rgb(218, 41, 41);
+}

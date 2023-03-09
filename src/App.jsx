@@ -14,10 +14,16 @@ const App = () => {
         element={
           <>
             <Navbar logo="Product List">
-              <Link id="add-product-btn" to="/add-product">
+              <Link
+                className="btn btn-primary"
+                id="add-product-btn"
+                to="/add-product"
+              >
                 ADD
               </Link>
-              <button id="delete-product-btn">MASS DELETE</button>
+              <button className="btn btn-danger" id="delete-product-btn">
+                MASS DELETE
+              </button>
             </Navbar>
 
             <ProductsList />
@@ -31,8 +37,10 @@ const App = () => {
         element={
           <>
             <Navbar logo="Product Add">
-              <button id="save-product">Save</button>
-              <Link id="cancel-product" to="/">
+              <button className="btn btn-primary" id="save-product">
+                Save
+              </button>
+              <Link className="btn btn-danger" id="cancel-product" to="/">
                 Cancel
               </Link>
             </Navbar>
