@@ -1,0 +1,41 @@
+.products-list {
+  padding: 5rem 0;
+}
+
+.products-list .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 2rem;
+}
+
+.product {
+  padding: 2rem;
+  border: 3px solid #222;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dimensions {
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dimensions span {
+  font-size: 0.8em;
+}
+
+.product-check {
+  width: 2.4rem;
+  height: 2.4rem;
+  align-self: flex-start;
+
+  accent-color: rgb(250, 70, 70);
+  cursor: pointer;
+}

@@ -10,6 +10,7 @@ import { validateForm } from "./validateForm";
 import { API_URL } from "../../../helpers/constants";
 
 import "./AddProductForm.css";
+import { toast } from "react-hot-toast";
 const AddProductForm = () => {
   // Form state
   const [formState, setFormState] = useState({
@@ -24,7 +25,6 @@ const AddProductForm = () => {
     type: "book",
   });
   const [errors, setErrors] = useState({});
-  const [formError, setFormError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Handle input change
@@ -49,8 +49,7 @@ const AddProductForm = () => {
     }
 
     try {
-      let res = await axios.post(`${API_URL}/products`, neededFormData);
-      console.log({ res });
+      await axios.post(`${API_URL}/products`, neededFormData);
       setFormState({
         sku: "",
         name: "",
@@ -62,12 +61,12 @@ const AddProductForm = () => {
         length: "",
         type: neededFormData.type,
       });
-      setFormError("");
+
+      toast.success("Product created successfully");
       setIsSubmitting(false);
     } catch (err) {
-      console.log({ err });
       setIsSubmitting(false);
-      setFormError(err.response.data.error);
+      toast.error(err.response.data.error);
     }
   };
 
@@ -212,8 +211,6 @@ const AddProductForm = () => {
                 />
               </>
             )}
-
-            {formError && <p className="error">{formError}</p>}
           </form>
         </div>
       </section>
