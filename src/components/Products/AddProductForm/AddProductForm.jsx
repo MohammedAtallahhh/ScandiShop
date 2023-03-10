@@ -66,7 +66,8 @@ const AddProductForm = () => {
       setIsSubmitting(false);
     } catch (err) {
       setIsSubmitting(false);
-      toast.error(err.response.data.error);
+      console.log({ err });
+      // toast.error(err.response.data.error);
     }
   };
 

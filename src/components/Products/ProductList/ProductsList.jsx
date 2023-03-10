@@ -26,9 +26,11 @@ const ProductsList = () => {
         `Product with SKUs ${skus.join(", ")} were successfully deleted`
       );
       setSkus([]);
+      console.log({ res });
     } catch (err) {
-      const errors = err.response.data;
-      errors.forEach((err) => toast.error(err));
+      console.log({ err });
+      // const errors = err.response.data;
+      // errors.forEach((err) => toast.error(err));
     }
   };
 
