@@ -1,8 +1,6 @@
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
-
 import { FormGroup } from "../../common";
 import { Navbar } from "../../Layout";
 
@@ -48,27 +46,33 @@ const AddProductForm = () => {
       return;
     }
 
-    try {
-      await axios.post(`${API_URL}/products`, neededFormData);
-      setFormState({
-        sku: "",
-        name: "",
-        price: "",
-        weight: "",
-        size: "",
-        height: "",
-        width: "",
-        length: "",
-        type: neededFormData.type,
-      });
+    fetch(`${API_URL}/products`, {
+      method: "POST",
+      body: JSON.stringify(neededFormData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log({ data });
+        if (data.error) {
+          setIsSubmitting(false);
+          toast.error(data.error);
+          return;
+        }
 
-      toast.success("Product created successfully");
-      setIsSubmitting(false);
-    } catch (err) {
-      setIsSubmitting(false);
-      console.log({ err });
-      // toast.error(err.response.data.error);
-    }
+        setFormState({
+          sku: "",
+          name: "",
+          price: "",
+          weight: "",
+          size: "",
+          height: "",
+          width: "",
+          length: "",
+          type: neededFormData.type,
+        });
+        toast.success("Product created successfully");
+        setIsSubmitting(false);
+      });
   };
 
   const getNeededFormData = useCallback(() => {

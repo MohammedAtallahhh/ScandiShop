@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -19,18 +18,23 @@ const ProductsList = () => {
     // Igonre it when there are no products to delete
     if (skus.length === 0) return;
 
-    try {
-      let res = await axios.delete(`${API_URL}/products`, { data: skus });
-      setProducts(res.data);
-      toast.success(
-        `Product with SKUs ${skus.join(", ")} were successfully deleted`
-      );
-      setSkus([]);
-      console.log({ res });
-    } catch (err) {
-      console.log({ err });
-      // const errors = err.response.data;
-      // errors.forEach((err) => toast.error(err));
+    const res = await fetch(`${API_URL}/products`, {
+      method: "DELETE",
+      body: JSON.stringify(skus),
+    });
+
+    let data = await res.json();
+
+    setProducts(data);
+
+    toast.success(
+      `Product with SKUs ${skus.join(", ")} were successfully deleted`
+    );
+
+    setSkus([]);
+
+    if (data.errors) {
+      data.errors.forEach((err) => toast.error(err));
     }
   };
 
