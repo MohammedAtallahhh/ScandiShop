@@ -106,10 +106,14 @@ const AddProductForm = () => {
           Cancel
         </Link>
       </Navbar>
+
       <section className="add-product">
         <div className="container">
           {/* Form */}
           <form id="product_form">
+            <Link to="/" className="back-button">
+              &#129104; Back to homepage
+            </Link>
             {/* Form group SKU */}
             <FormGroup
               label="SKU"

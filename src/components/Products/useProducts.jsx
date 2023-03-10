@@ -11,7 +11,7 @@ export const useProducts = () => {
       setProducts(response.data);
     });
   }, []);
-  return products;
+  return [products, setProducts];
 };
 
 export default useProducts;

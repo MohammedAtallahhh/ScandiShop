@@ -6,7 +6,7 @@
 }
 
 .form-group label {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 600;
 }
 
@@ -14,7 +14,7 @@
 .form-group select {
   border: none;
   outline: 1px solid #ccc;
-  padding: 1.25rem 2rem;
+  padding: 1.5rem 2rem;
   font-size: 1.6rem;
 
   transition: 100ms ease-in-out;

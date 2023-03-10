@@ -1,22 +1,34 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { API_URL } from "../../../helpers/constants";
+
+import toast from "react-hot-toast";
 
 import { Navbar } from "../../Layout";
 import useProducts from "../useProducts";
 
+import { API_URL } from "../../../helpers/constants";
+
 import "./ProductList.css";
 const ProductsList = () => {
-  const porducts = useProducts();
+  const [porducts, setProducts] = useProducts();
+
   const [skus, setSkus] = useState([]);
 
   const handleDeleteSelected = async () => {
+    // Igonre it when there are no products to delete
+    if (skus.length === 0) return;
+
     try {
       let res = await axios.delete(`${API_URL}/products`, { data: skus });
-      console.log({ res });
+      setProducts(res.data);
+      toast.success(
+        `Product with SKUs ${skus.join(", ")} were successfully deleted`
+      );
+      setSkus([]);
     } catch (err) {
-      console.log({ err });
+      const errors = err.response.data;
+      errors.forEach((err) => toast.error(err));
     }
   };
 
@@ -66,7 +78,7 @@ const ProductsList = () => {
                   <input
                     type="checkbox"
                     id="check"
-                    className="product-check"
+                    className="delete-checkbox"
                     onChange={(e) => handleCheckCliked(e, sku)}
                   />
 

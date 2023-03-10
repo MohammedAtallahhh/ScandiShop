@@ -6,3 +6,13 @@
   max-width: 600px;
   margin: 0 auto;
 }
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 5rem;
+  color: rgb(57, 116, 243);
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
