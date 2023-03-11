@@ -1,6 +1,8 @@
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { toast } from "react-hot-toast";
+
 import { FormGroup } from "../../common";
 import { Navbar } from "../../Layout";
 
@@ -8,7 +10,6 @@ import { validateForm } from "./validateForm";
 import { API_URL } from "../../../helpers/constants";
 
 import "./AddProductForm.css";
-import { toast } from "react-hot-toast";
 const AddProductForm = () => {
   // Form state
   const [formState, setFormState] = useState({
