@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { toast } from "react-hot-toast";
 
@@ -25,6 +25,8 @@ const AddProductForm = () => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
 
   // Handle input change
   const handleInputChange = (e) => {
@@ -54,6 +56,7 @@ const AddProductForm = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log({ data });
+
         if (data.error) {
           setIsSubmitting(false);
           toast.error(data.error);
@@ -71,8 +74,12 @@ const AddProductForm = () => {
           length: "",
           type: neededFormData.type,
         });
+
         toast.success("Product created successfully");
+
         setIsSubmitting(false);
+
+        navigate("/");
       });
   };
 

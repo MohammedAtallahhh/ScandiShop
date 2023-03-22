@@ -19,8 +19,8 @@ const ProductsList = () => {
     if (skus.length === 0) return;
 
     const res = await fetch(`${API_URL}/products`, {
-      method: "DELETE",
-      body: JSON.stringify(skus),
+      method: "POST",
+      body: JSON.stringify({ skus }),
     });
 
     let data = await res.json();
