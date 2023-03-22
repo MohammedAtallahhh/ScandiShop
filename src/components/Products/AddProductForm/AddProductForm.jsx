@@ -41,10 +41,10 @@ const AddProductForm = () => {
     setIsSubmitting(true);
 
     const neededFormData = getNeededFormData();
-    const errors = validateForm(neededFormData);
-    setErrors(errors);
+    const validationErrors = validateForm(neededFormData);
+    setErrors(validationErrors);
 
-    if (Object.keys(errors).length > 0) {
+    if (Object.keys(validationErrors).length > 0) {
       setIsSubmitting(false);
       return;
     }
@@ -82,6 +82,8 @@ const AddProductForm = () => {
         navigate("/");
       });
   };
+
+  console.log({ errors });
 
   const getNeededFormData = useCallback(() => {
     const { sku, name, price, type } = formState;
