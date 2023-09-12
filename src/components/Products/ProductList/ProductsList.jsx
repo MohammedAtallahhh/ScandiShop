@@ -18,24 +18,16 @@ const ProductsList = () => {
     // Igonre it when there are no products to delete
     if (skus.length === 0) return;
 
-    const res = await fetch(`${API_URL}/products`, {
+    await fetch(`${API_URL}/products`, {
       method: "POST",
       body: JSON.stringify({ skus }),
     });
-
-    let data = await res.json();
-
-    setProducts(data);
 
     toast.success(
       `Product with SKUs ${skus.join(", ")} were successfully deleted`
     );
 
     setSkus([]);
-
-    if (data.errors) {
-      data.errors.forEach((err) => toast.error(err));
-    }
   };
 
   const handleCheckCliked = (e, sku) => {

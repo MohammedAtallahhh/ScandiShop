@@ -48,7 +48,7 @@ const AddProductForm = () => {
       setIsSubmitting(false);
       return;
     }
-
+    console.log({ neededFormData });
     fetch(`${API_URL}/products`, {
       method: "POST",
       body: JSON.stringify(neededFormData),
@@ -82,8 +82,6 @@ const AddProductForm = () => {
         navigate("/");
       });
   };
-
-  console.log({ errors });
 
   const getNeededFormData = useCallback(() => {
     const { sku, name, price, type } = formState;
